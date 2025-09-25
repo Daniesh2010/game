@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwq5a82hf2e71"]
+
+[ext_resource type="Script" uid="uid://ybni0av3uaar" path="res://scripts/ghost.gd" id="1_l5lq6"]
+[ext_resource type="Texture2D" uid="uid://mgk8q2vockgb" path="res://assets/Inside_D.png" id="2_bbnym"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_veat2"]
+radius = 8.0
+height = 58.0
+
+[node name="Ghost" type="CharacterBody2D"]
+script = ExtResource("1_l5lq6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -34)
+texture = ExtResource("2_bbnym")
+region_enabled = true
+region_rect = Rect2(459.23938, 120.40572, 39.4411, 75.910774)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -31)
+shape = SubResource("CapsuleShape2D_veat2")

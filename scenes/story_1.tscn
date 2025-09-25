@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxya58tjcrp3m"]
+
+[ext_resource type="Script" uid="uid://c87ftdpw7k54" path="res://scripts/storytext.gd" id="1_bhi84"]
+[ext_resource type="Script" uid="uid://scfautsev817" path="res://scripts/story_1.gd" id="1_frgbh"]
+
+[node name="story1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_frgbh")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1282.0
+offset_bottom = 727.0
+color = Color(0.017732391, 0.017732391, 0.01773239, 1)
+
+[node name="Storytext" type="Label" parent="."]
+layout_mode = 0
+offset_top = 242.0
+offset_right = 1282.0
+offset_bottom = 287.0
+theme_override_font_sizes/font_size = 32
+text = "Test"
+horizontal_alignment = 1
+script = ExtResource("1_bhi84")
+
+[node name="Timer" type="Timer" parent="Storytext"]
+wait_time = 0.101
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Storytext/Timer" to="Storytext" method="_on_timer_timeout"]
