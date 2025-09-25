@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwq5a82hf2e71"]
+[gd_scene load_steps=5 format=3 uid="uid://dwq5a82hf2e71"]
 
 [ext_resource type="Script" uid="uid://ybni0av3uaar" path="res://scripts/ghost.gd" id="1_l5lq6"]
 [ext_resource type="Texture2D" uid="uid://mgk8q2vockgb" path="res://assets/Inside_D.png" id="2_bbnym"]
+[ext_resource type="AudioStream" uid="uid://v5cx0hp37n82" path="res://sound/scream.wav" id="3_bbnym"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_veat2"]
 radius = 8.0
@@ -19,3 +20,7 @@ region_rect = Rect2(459.23938, 120.40572, 39.4411, 75.910774)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -31)
 shape = SubResource("CapsuleShape2D_veat2")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bbnym")
+autoplay = true

@@ -27,4 +27,5 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	get_tree().change_scene_to_file("res://scenes/abandoned_house.tscn")
+	if body.name == "Player":
+		get_tree().change_scene_to_file("res://scenes/abandoned_house.tscn")

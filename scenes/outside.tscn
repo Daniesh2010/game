@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=4 uid="uid://buff3jne0fa3a"]
+[gd_scene load_steps=8 format=4 uid="uid://buff3jne0fa3a"]
 
 [ext_resource type="TileSet" uid="uid://cee74gn3y2f0v" path="res://scenes/outside.tres" id="1_p61qw"]
 [ext_resource type="PackedScene" uid="uid://cicshuj13dk3c" path="res://scenes/player.tscn" id="2_nsm10"]
 [ext_resource type="Texture2D" uid="uid://c6mrcqmu80ov7" path="res://assets/32x48_cars_Endsega_32.png" id="3_8lkp2"]
+[ext_resource type="AudioStream" uid="uid://dacx48ba1qiv3" path="res://sound/night-cricket.mp3" id="4_udpx5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udpx5"]
 size = Vector2(20, 47.36843)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lkp2"]
 size = Vector2(1724, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7r1kg"]
+size = Vector2(11.702754, 1311.9983)
 
 [node name="Outside" type="Node2D"]
 
@@ -27,6 +31,14 @@ tile_set = ExtResource("1_p61qw")
 
 [node name="Player" parent="." instance=ExtResource("2_nsm10")]
 position = Vector2(556, 196)
+
+[node name="Camera2D2" type="Camera2D" parent="Player"]
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = -1
+limit_right = 1330
+limit_bottom = 760
+position_smoothing_enabled = true
 
 [node name="Car" type="Sprite2D" parent="."]
 z_index = -1
@@ -57,5 +69,33 @@ position = Vector2(532, 792)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(179, 0)
 shape = SubResource("RectangleShape2D_8lkp2")
+
+[node name="NightAmbiance" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_udpx5")
+autoplay = true
+bus = &"Ambiance"
+
+[node name="Borders" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+position = Vector2(0, 382.5)
+shape = SubResource("RectangleShape2D_7r1kg")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Borders"]
+position = Vector2(1325, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D3"]
+position = Vector2(0, 382.5)
+shape = SubResource("RectangleShape2D_7r1kg")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Borders"]
+position = Vector2(781, 1.9999695)
+rotation = 1.572105
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D2"]
+position = Vector2(4.148625, 119.000854)
+shape = SubResource("RectangleShape2D_7r1kg")
 
 [connection signal="body_entered" from="Area2D" to="Player" method="_on_area_2d_body_entered"]

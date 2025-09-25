@@ -1,0 +1,7 @@
+NightMare Lily:
+	Sound
+		SFX
+		Ambient
+		Lily's Scream
+	Lily Ai
+	Hiding mechanic
